@@ -57,62 +57,87 @@ public class Rodriguez_Eric_Exam1 {
             break;
                 case 2:
                     String clave = "";
-                    System.out.println("Favor ingrese su texto cifrado");
+                    
+                    System.out.println("Favor ingrese su texto a cifrar: ");
                     clave = sc.next();
-                           
                     for (int i = 0; i < clave.length(); i++) {
                         char caracter = clave.charAt(i);
                         if ( caracter >= 'a' && caracter <= 'z'){
-                            caracter = (char) ('a' + 'z' - caracter);
-                        } 
-                        clavecifrada = clave + caracter;
-                    }
-                    System.out.println("Mensaje cifrado: "+clavecifrada);
-            
-       
-        System.out.println("Oracion cifrada: " + clavecifrada);
-
-     
-
-                    break;
-                case 3: 
-                  String eleccionusuario="";
-                    boolean valido = false;
-                    while (valido == false){
-                    System.out.println("Bienvenido a piedra papel o tijera!");
-                        System.out.println("Favor eliga: piedra papel o tijera");
-                        eleccionusuario = sc.next().toLowerCase();
-                        if (eleccionusuario.equals("piedra") || eleccionusuario.equals("tijera") || eleccionusuario.equals("papel")){
-                        valido = true;
+                            char caracterinv = (char) ('z' - (caracter - 'a'));
+                            clavecifrada = clavecifrada + caracterinv;
+                        }
+                        else if (caracter >= 'A' && caracter <= 'Z'){
+                            char caracterinv = (char) ('Z' - (caracter - 'A'));
+                            clavecifrada = clavecifrada + caracterinv;
                     } else {
-                        System.out.println("Opcion invalida, intente de nuevo");
-                        valido = false;
-                    }
-                    }
-                    
-                    int aleatorio = random.nextInt(3);
-                    String computadora = ""; //La eleccion de la computadora 
-                    if (aleatorio == 1){
-                        computadora = "papel";
-                    } else if (aleatorio == 2){
-                        computadora = "tijera";
-                    } else if (aleatorio == 3){
-                            computadora = "piedra";
-                            }
-                    System.out.println("Computadora: "+computadora);
+                            clavecifrada = clavecifrada + caracter;
+                        }
+                        
+                    }  System.out.println("Caracter cifrado: "+clavecifrada);
+                    break;
+                    //PIEDRA PAPEL O TIJERA
+                case 3: 
+                      
                    
-                    if (eleccionusuario.equals(computadora)){
-                        System.out.println("Empate ");
-                    } else if (eleccionusuario.equals("papel") && computadora.equals("piedra"))  {
-                        System.out.println("Usted gana");
-                    } else if (eleccionusuario.equals("tijera") && computadora.equals("papel")){
-                            System.out.println("Usted gana");
-                            } else if (eleccionusuario.equals("piedra") && computadora.equals("tijera")){
-                                System.out.println("Usted gana");
-                            } else {
-                                System.out.println("La computadora gana");
-                            }
-                    System.out.println("Gracias por jugar!!");
+                    boolean terminodejugar = false;
+
+        while (terminodejugar == false) {
+            String eleccionusuario = "";
+            boolean valido = false;
+
+             
+            while (valido == false) {
+                System.out.println("Bienvenido a piedra papel o tijera!");
+                System.out.println("Favor elija: piedra, papel o tijera");
+                eleccionusuario = sc.next().toLowerCase();
+
+                if (eleccionusuario.equals("piedra") || eleccionusuario.equals("tijera") || eleccionusuario.equals("papel")) {
+                    valido = true;
+                } else {
+                    System.out.println("Opción inválida, intente de nuevo");
+                }
+            }
+
+             
+            int aleatorio = random.nextInt(3);
+            String computadora = "";
+
+            if (aleatorio == 0) {
+                computadora = "papel";
+            } else if (aleatorio == 1) {
+                computadora = "tijera";
+            } else {
+                computadora = "piedra";
+            }
+
+            System.out.println("Computadora: " + computadora);
+
+             
+            if (eleccionusuario.equals(computadora)) {
+                System.out.println("Empate");
+            } else if (eleccionusuario.equals("papel") && computadora.equals("piedra") ||
+                       eleccionusuario.equals("tijera") && computadora.equals("papel") ||
+                       eleccionusuario.equals("piedra") && computadora.equals("tijera")) {
+                System.out.println("Usted gana");
+            } else {
+                System.out.println("La computadora gana");
+            }
+
+            System.out.println("Gracias por jugar!!");
+
+             
+            System.out.println("Desea jugar de nuevo? (si/no)");
+            String respuesta = sc.next().toLowerCase();
+
+            if (respuesta.equals("si")) {
+                terminodejugar = false;
+            } else {
+                terminodejugar = true;
+                System.out.println("Gracias por jugar");
+            }  
+        }
+                    
+                    
                      break;
                      //ADIVINAR
                 case 4:
@@ -138,7 +163,9 @@ public class Rodriguez_Eric_Exam1 {
                     
                     
                     break;
-                    
+                case 5:
+                    System.out.println("Saliendo del sistema");
+                    break;
                 default:
                     System.out.println("Opcion no valida, intente de nuevo");
                     break;

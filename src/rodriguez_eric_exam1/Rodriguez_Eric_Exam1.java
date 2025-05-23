@@ -60,16 +60,15 @@ public class Rodriguez_Eric_Exam1 {
                     System.out.println("Favor ingrese su texto cifrado");
                     clave = sc.next();
                            
-                    /*for (int i = 0; i < clave.length(); i++) {
+                    for (int i = 0; i < clave.length(); i++) {
                         char caracter = clave.charAt(i);
                         if ( caracter >= 'a' && caracter <= 'z'){
                             caracter = (char) ('a' + 'z' - caracter);
                         } 
                         clavecifrada = clave + caracter;
                     }
-                    System.out.println("Mensaje cifrado: "+clavecifrada);*/
+                    System.out.println("Mensaje cifrado: "+clavecifrada);
             
-        }
        
         System.out.println("Oracion cifrada: " + clavecifrada);
 
@@ -113,8 +112,32 @@ public class Rodriguez_Eric_Exam1 {
                             } else {
                                 System.out.println("La computadora gana");
                             }
+                    System.out.println("Gracias por jugar!!");
                      break;
+                     //ADIVINAR
                 case 4:
+                    int  contador = 0;
+                    int numingresado =0;
+                    int numaleatorio = random.nextInt(100);
+                    boolean adivinonum = false;
+                    while (contador < 10 && adivinonum == false){
+                        System.out.println("Favor ingrese un numero del 1 al 100: ");
+                        
+                        numingresado = sc.nextInt();
+                        contador++;
+                        if (numaleatorio == numingresado){
+                            break;
+                        }
+                    }
+                    if (numingresado == numaleatorio){
+                        System.out.println("Felicidades adivino el numero en el intento #"+contador);
+                        
+                    } else if (numingresado != numaleatorio  ){
+                        System.out.println("Lo siento, te quedaste sin intentos, el numero era "+numaleatorio);
+                    }
+                    
+                    
+                    break;
                     
                 default:
                     System.out.println("Opcion no valida, intente de nuevo");
